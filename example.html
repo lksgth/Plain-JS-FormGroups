@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Example Form</title>
+  <style>
+    body {
+      margin: 0px;
+      padding: 0px;
+      display: flex;
+      justify-content: center;
+      padding-top: 20vh;
+      background-color: #F2F3F5;
+    }
+
+    h1,
+    p,
+    label {
+      margin: 0px;
+      color: #3B3B3B;
+    }
+
+    h1 {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 38px;
+      width: 80%;
+      padding-bottom: 15px;
+    }
+
+    p,
+    label,
+    input {
+      font-family: 'Nunito Sans', sans-serif;
+    }
+
+    hr {
+      height: 1px;
+      margin: 1.5rem 0rem;
+      border: none;
+      background-color: #E1E1E1;
+    }
+
+    main {
+      width: 350px;
+      height: auto;
+      padding: 2.5rem;
+      border-radius: 3px;
+      border: 1px solid #E1E1E1;
+      background-color: #ffffff;
+    }
+
+    .form_group {
+      width: 100%;
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    .form_group .input_group {
+      width: 100%;
+    }
+
+    .form_group .input_group label {
+      width: 100%;
+      display: block;
+      font-weight: 600;
+      padding-bottom: 10px;
+    }
+
+    .form_group .input_group input {
+      width: 100%;
+      border-radius: 3px;
+      border: 1px solid #d1d1d1;
+      padding: 4px 8px;
+      box-sizing: border-box;
+    }
+
+    .form_group .input_group input:focus {
+      outline: none;
+      box-shadow: 0px 0px 2px 3px rgba(24, 130, 201, 0.15);
+    }
+
+    .form_group .input_group input.invalid {
+      border-color: rgb(214, 9, 9);
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Example Form using FormGroups</h1>
+    <p>Mandatory fields are marked with *.</p>
+    <hr>
+    <form>
+      <div class="form_group">
+        <div class="input_group">
+          <label for="name">Name*</label>
+          <input type="text" id="name" name="name" placeholder="Name">
+        </div>
+      </div>
+      <div class="form_group">
+        <div class="input_group">
+          <label for="surname">Surname</label>
+          <input type="text" id="surname" name="surname" placeholder="Surname">
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <script src="./main.js"></script>
+</body>
+
+</html>
