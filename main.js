@@ -57,31 +57,45 @@ class FormControl {
   get name() {
     return this._name;
   }
+
+  get value() {
+    return this.DOM_ELEMENT.value;
+  }
 }
 
 class FormGroup {
   constructor() {
-    this.valid = true;
-    this.controls = [];
-    this.data = [];
+    this._valid = true;
+    this._controls = [];
+    this._data = [];
   }
 
   _build_data() {
-    const controls_names = Object.keys(this.controls);
+    const controls_names = Object.keys(this._controls);
 
     for (let i = 0; i < controls_names.length; i++) {
-      this.data.push({
-        control_name: controls_names[i],
-        value: this.controls[i][0].value
+      this._data.push({
+        control_name: this.controls[i].name,
+        value: this.controls[i].value
       });
     }
   }
 
   add_control(input_field_id, validators = []) {
     if (input_field_id && validators)
-      this.controls.push(new FormControl(input_field_id, validators));
+      this._controls.push(new FormControl(input_field_id, validators));
     else
       throw "Unable to add control in cause of invalid or missing parameters!";
+  }
+
+  get controls() {
+    return this._controls;
+  }
+
+  get data() {
+    this._build_data();
+
+    return this._data;
   }
 }
 
