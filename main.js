@@ -3,6 +3,7 @@ class FormControl {
     this._name = input_field_id;
     this._input_field_id = input_field_id;
     this._validators = validators;
+    this._type = this._get_input_type();
 
     // set event listeners
     this.DOM_ELEMENT.addEventListener("keyup", (e) => {
@@ -21,6 +22,19 @@ class FormControl {
 
       return null;
     });
+  }
+
+  _get_input_type() {
+    const type = this.DOM_ELEMENT.attributes.getNamedItem("type");
+
+    if (type !== null) {
+      switch (type.nodeValue) {
+        case "checkbox":
+          return "checkbox";
+        default:
+          return "text";
+      }
+    }
   }
 
   _valid_input(value, validators) {
@@ -59,7 +73,12 @@ class FormControl {
   }
 
   get value() {
-    return this.DOM_ELEMENT.value;
+    switch (this._type) {
+      case "checkbox":
+        return this.DOM_ELEMENT.checked;
+      default:
+        return this.DOM_ELEMENT.value;
+    }
   }
 }
 
