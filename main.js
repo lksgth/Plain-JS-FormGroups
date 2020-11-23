@@ -71,6 +71,8 @@ class FormGroup {
   }
 
   _build_data() {
+    this._data = [];
+
     const controls_names = Object.keys(this._controls);
 
     for (let i = 0; i < controls_names.length; i++) {
